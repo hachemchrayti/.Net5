@@ -1,25 +1,37 @@
-Strings are immutable in C#:
-Mutable means can be changed whereas Immutable means can not be changed. C# strings are immutable means C# strings cannot be changed.
+**Rules for Static Class
+Static classes cannot be instantiated.
+All the members of a static class must be static; otherwise the compiler will give an error.
+A static class can contain static variables, static methods, static properties, static operators, static events, and static constructors.
+A static class cannot contain instance members and constructors.
+Indexers and destructors cannot be static
+var cannot be used to define static members. You must specify a type of member explicitly after the static keyword.
+Static classes are sealed class and therefore, cannot be inherited.
+A static class cannot inherit from other classes.
+Static class members can be accessed using ClassName.MemberName.
+A static class remains in memory for the lifetime of the application domain in which your program resides.
 
- When the first statement executed, it will create one object and assign the value DotNet.
-But when the second statement executed, it will not override the first object,
-it lets the first object to be their for garbage collection and creates a fresh object and assign the value Tutorials.
 
-Strings are immutable in C#
+**Static Members in Non-static Class
+The normal class (non-static class) can contain one or more static methods, fields, properties, events and other non-static members.
+It is more practical to define a non-static class with some static members, than to declare an entire class as static.
 
-So, when the above two statements executed, internally two memory locations are created.
- One with the value DotNet and the current one with the value Tutorials and the current one is going to be referred in the program. So, each time,
- you assign a new value to the string variable, a new object is created and this is the reason why strings are immutable.
 
-NB:  this is not the case with value type.
+**Static Fields
+Static fields in a non-static class can be defined using the static keyword.
+Static fields of a non-static class is shared across all the instances. So, changes done by one instance would reflect in others.
 
-String Interning in C#:
-if you are running a for loop and assigning the same value again and again, then it uses string interning to improve the performance.
-In this case rather than creating new object, it uses the same memory location.
 
-StringBuilder for concatenation:
-In order to solve the above string concatenation problem, the .NET Framework provides StringBuilder class. As the name itself saying everything,
-the string builder class is used to build a string. If you use string builder then fresh objects are not going to created.
 
-Why they made C# String as Immutable?
-They made Strings as Immutable for Thread Safety
+**Rules for Static Methods
+Static methods can be defined using the static keyword before a return type and after an access modifier.
+Static methods can be overloaded but cannot be overridden.
+Static methods can contain local static variables.
+Static methods cannot access or call non-static variables unless they are explicitly passed as parameters.
+
+
+
+**Rules for Static Constructors
+The static constructor is defined using the static keyword and without using access modifiers public, private, or protected.
+A non-static class can contain one parameterless static constructor. Parameterized static constructors are not allowed.
+Static constructor will be executed only once in the lifetime. So, you cannot determine when it will get called in an application if a class is being used at multiple places.
+A static constructor can only access static members. It cannot contain or access instance members.
