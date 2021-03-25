@@ -9,57 +9,56 @@ namespace Net5CodingProject
         static void Main(string[] args)
         {
 
-            string str = "";
-            Console.WriteLine("Loop Started");
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            for (int i = 0; i < 30000000; i++)
-            {
-                str = Guid.NewGuid().ToString();
-            }
-            stopwatch.Stop();
-            Console.WriteLine("Loop Ended");
-            Console.WriteLine("Loop Exceution Time in MS :" + stopwatch.ElapsedMilliseconds);
+            var result = Calculator.Sum(10, 25); // calling static method
+            Calculator.Store(result);
+            Console.WriteLine(result);
 
-            Console.WriteLine("-------------------------------------------------------------");
+            var calcType = Calculator.Type; // accessing static variable
+            Calculator.Type = "Scientific"; // assign value to static variable
 
-            int ctr = 0;
-            Console.WriteLine("Loop Started");
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
-            for (int i = 0; i < 30000000; i++)
-            {
-                ctr = ctr + 1;
-            }
-            stopwatch.Stop();
-            Console.WriteLine("Loop Ended");
-            Console.WriteLine("Loop Exceution Time in MS :" + stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("-------------------------------------------------------------");
+            Console.WriteLine("---------------------------------------------------");
 
-            var str1 = "";
-            Console.WriteLine("Loop Started");
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
-            for (int i = 0; i < 30000; i++)
-            {
-                str = "DotNet Tutorials" + str;
-            }
-            stopwatch.Stop();
-            Console.WriteLine("Loop Ended");
-            Console.WriteLine("Loop Exceution Time in MS :" + stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("-------------------------------------------------------------");
+            StopWatch sw1 = new StopWatch();
+            StopWatch sw2 = new StopWatch();
+            Console.WriteLine(StopWatch.NoOfInstances); //2 
 
-            StringBuilder stringBuilder = new StringBuilder();
-            Console.WriteLine("Loop Started");
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
-            for (int i = 0; i < 30000; i++)
-            {
-                stringBuilder.Append("DotNet Tutorials");
-            }
-            stopwatch.Stop();
-            Console.WriteLine("Loop Ended");
-            Console.WriteLine("Loop Exceution Time in MS :" + stopwatch.ElapsedMilliseconds);
+            StopWatch sw3 = new StopWatch();
+            StopWatch sw4 = new StopWatch();
+            Console.WriteLine(StopWatch.NoOfInstances);//4
         }
     }
+
+    public class StopWatch
+    {
+        public static int NoOfInstances = 0;
+
+        // instance constructor
+        public StopWatch()
+        {
+            Console.WriteLine("Instance constructor called");
+            StopWatch.NoOfInstances++;
+        }
+
+        // static constructor
+        static StopWatch()
+        {
+            Console.WriteLine("Static constructor called");
+        }
+
+
+
+
+        // static method
+        public static void DisplayInfo()
+        {
+            Console.WriteLine("DisplayInfo called");
+        }
+
+        // instance method
+        public void Start() { }
+
+        // instance method
+        public void Stop() { }
+    }
+
 }
