@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # globs
 Makefile.in
 *.userprefs
@@ -403,3 +404,23 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+=======
+# Build and Release Folders
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
+# Other files and folders
+.settings/
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.
+>>>>>>> 94f92c09331df63a0e6b8d74063bb955da19e70d
