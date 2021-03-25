@@ -6,59 +6,48 @@ namespace Net5CodingProject
 {
     class Program
     {
-        static void Main(string[] args)
+        public void ChangeReferenceType(Student std2)
         {
-
-            var result = Calculator.Sum(10, 25); // calling static method
-            Calculator.Store(result);
-            Console.WriteLine(result);
-
-            var calcType = Calculator.Type; // accessing static variable
-            Calculator.Type = "Scientific"; // assign value to static variable
-
-            Console.WriteLine("---------------------------------------------------");
-
-            StopWatch sw1 = new StopWatch();
-            StopWatch sw2 = new StopWatch();
-            Console.WriteLine(StopWatch.NoOfInstances); //2 
-
-            StopWatch sw3 = new StopWatch();
-            StopWatch sw4 = new StopWatch();
-            Console.WriteLine(StopWatch.NoOfInstances);//4
+            std2.StudentName = "Steve";
         }
+
+        public void ChangeValueTypeValue(int x)
+        {
+            x = 200;
+
+            Console.WriteLine(x);
+        }
+
+        public static void Main()
+        {
+            Student std1 = new Student();
+
+            std1.StudentName = "Bill";
+
+            Program p = new Program();
+            p.ChangeReferenceType(std1);
+
+            Console.WriteLine(std1.StudentName);
+
+            Console.WriteLine("--------------------");
+            int i = 100;
+
+            Console.WriteLine(i);
+
+            p.ChangeValueTypeValue(i);
+
+            Console.WriteLine(i);
+
+        }
+
+
     }
 
-    public class StopWatch
+    public class Student
     {
-        public static int NoOfInstances = 0;
 
-        // instance constructor
-        public StopWatch()
-        {
-            Console.WriteLine("Instance constructor called");
-            StopWatch.NoOfInstances++;
-        }
+        public string StudentName { get; set; }
 
-        // static constructor
-        static StopWatch()
-        {
-            Console.WriteLine("Static constructor called");
-        }
-
-
-
-
-        // static method
-        public static void DisplayInfo()
-        {
-            Console.WriteLine("DisplayInfo called");
-        }
-
-        // instance method
-        public void Start() { }
-
-        // instance method
-        public void Stop() { }
     }
 
 }
